@@ -38,6 +38,13 @@ const observable = (obj, options = {}) => {
   }
 }
 
+const shallowObservable = (obj, options = {}) => {
+  observable(obj, {
+    ...options,
+    deep: false
+  })
+}
+
 const observe = (obj, key, callback) => {
   let targetObj = obj
   let targetKey = key
@@ -47,10 +54,11 @@ const observe = (obj, key, callback) => {
     targetObj = keyPath.reduce((acc, v) => acc[v], obj)
   }
 
-  depCenter.get(targetObj)[targetKey].add(callback)
+  depCenter.get(targetObj)?.[targetKey].add(callback)
 }
 
 export {
   observable,
+  shallowObservable,
   observe
 }

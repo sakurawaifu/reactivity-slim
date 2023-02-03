@@ -1,4 +1,4 @@
-import { observable, observe } from '../observe/meta_property/observe.js'
+import { observe, shallowObservable } from '../observe/meta_property/observe.js'
 
 const data = {
   a: 1,
@@ -12,10 +12,11 @@ const data = {
   }
 }
 
-observable(data)
+shallowObservable(data)
 
+observe(data, 'c', () => {
+  console.log('update c')
+})
 observe(data, 'c.c1', () => {
   console.log('update c.c1')
 })
-
-data.c.c1 = 2
