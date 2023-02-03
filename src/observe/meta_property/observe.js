@@ -47,18 +47,25 @@ const shallowObservable = (obj, options = {}) => {
 
 const observe = (obj, key, callback, options = {}) => {
   const {
+    ancestral = true,
     deep = false
   } = options
 
   let targetObj = obj
   let targetKey = key
-  if (key.includes('.')) {
-    const keyPath = key.split('.')
-    targetKey = keyPath.pop()
-    targetObj = keyPath.reduce((acc, v) => acc[v], obj)
+  const keyPath = key.split('.')
+
+  if (keyPath.length === 1) {
+    depCenter.get(obj)?.[key].add(callback)
+  } else {
+    let curObj = obj
+    for (const curKey of keyPath) {
+      targetObj = curObj
+      targetKey = curKey
+      ancestral && depCenter.get(curObj)?.[curKey].add(callback)
+      curObj = curObj[curKey]
+    }
   }
-  const deps = depCenter.get(targetObj)?.[targetKey]
-  deps.add(callback)
 
   if (deep) {
     const v = targetObj[targetKey]

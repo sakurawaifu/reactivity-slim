@@ -14,13 +14,16 @@ const data = {
 
 observable(data)
 
-observe(data, 'c', () => {
-  console.log('update c')
+// observe(data, 'c', () => {
+//   console.log('update c')
+// }, {
+//   deep: true
+// })
+observe(data, 'c.c1', () => {
+  console.log('update c.c1')
 }, {
   deep: true
 })
-// observe(data, 'c.c1', () => {
-//   console.log('update c.c1')
-// })
 
-data.c.c1 = 2
+// data.c = 2
+data.c.c1.c11 = 2
