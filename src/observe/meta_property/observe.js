@@ -22,11 +22,11 @@ const observable = (obj, options = {}) => {
       get() {
         return value
       },
-      set(nv) {
-        if (compare && nv === value) return
+      set(newV) {
+        if (compare && newV === value) return
 
-        deps.forEach(dep => dep())
-        nv = value
+        newV = value
+        deps.forEach(dep => dep(newV, value))
       }
     })
 
@@ -45,7 +45,11 @@ const shallowObservable = (obj, options = {}) => {
   })
 }
 
-const observe = (obj, key, callback) => {
+const observe = (obj, key, callback, options = {}) => {
+  const {
+    deep = false
+  } = options
+
   let targetObj = obj
   let targetKey = key
   if (key.includes('.')) {
@@ -53,8 +57,17 @@ const observe = (obj, key, callback) => {
     targetKey = keyPath.pop()
     targetObj = keyPath.reduce((acc, v) => acc[v], obj)
   }
+  const deps = depCenter.get(targetObj)?.[targetKey]
+  deps.add(callback)
 
-  depCenter.get(targetObj)?.[targetKey].add(callback)
+  if (deep) {
+    const v = targetObj[targetKey]
+    if (isPlainObject(v)) {
+      for (const k in v) {
+        observe(v, k, callback, options)
+      }
+    }
+  }
 }
 
 export {
