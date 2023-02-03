@@ -14,8 +14,8 @@
 
 ```options```:
 
-* compare：一个 boolean，表是否需要比较新旧值。false 表不比较，只要设置属性值一律触发回调。
-* deep：一个 boolean，表是否深度监听。
+* compare：一个 boolean，表是否需要比较新旧值。false 表不比较，只要设置属性值一律触发回调。默认true。
+* deep：一个 boolean，表是否深度监听。默认true。
 
 ```return```：无返回值。
 
@@ -29,8 +29,6 @@
 
 监听数据 ```obj``` 的指定键 ```key```，当其修改时触发回调 ```callback```。
 
-若 ```key``` 是深层属性，当其祖先属性被修改导致该属性不存在时，不会触发该属性的回调。
-
 ```obj```：要监听的对象（只能为 plainObject）。
 
 ```key```：一个 string，表要监听的键。
@@ -38,7 +36,8 @@
 ```callback```：数据修改时触发的回调。
 
 ```options```：
-* deep：一个 boolean，表是否深度监听。
+* deep：一个 boolean，表是否深度监听。默认false。
+* ancestral：一个 boolean。与 deep 相反，表祖先属性被修改时，是否触发该属性的回调。默认true。
 
 ```return```：无返回值。
 
