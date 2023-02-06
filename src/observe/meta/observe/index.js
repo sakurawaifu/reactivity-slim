@@ -11,4 +11,6 @@ const observe = (...args) => {
   }
 }
 
-export default observe
+export {
+  observe
+}

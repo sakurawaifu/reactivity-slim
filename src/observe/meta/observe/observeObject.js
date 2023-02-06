@@ -1,6 +1,6 @@
 import depCenter from '../depCenter.js'
 import { isPlainObject } from '../../../utils/utils.js'
-import observe from './observe.js'
+import observe from './index.js'
 
 const observeObject = (obj, key, callback, options = {}) => {
   const {

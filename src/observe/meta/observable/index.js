@@ -4,12 +4,12 @@ import observableArray from './observableArray.js'
 import depCenter from '../depCenter.js'
 
 const observable = (value, options = {}) => {
+  if (isObservable(value)) return
+
   if (isPlainObject(value)) {
     observableObject(value, options)
   } else if (Array.isArray(value)) {
     observableArray(value, options)
-  } else {
-    throw new Error('value must be an plain object, or array')
   }
 }
 
