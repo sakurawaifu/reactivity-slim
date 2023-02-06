@@ -4,6 +4,17 @@
 
 一个简单的响应式系统监听数据，当数据修改时触发回调。有 meta property 和 proxy 两种实现。
 
+## 安装
+
+`npm i reactivity-slim`
+
+## 使用
+`import { observable, observe } from 'reactivity-slim/meta'`
+
+或
+
+`import { observable, observe } from 'reactivity-slim/proxy'`
+
 # meta property
 
 通过属性的 [[Get]]、[[Set]] 元属性实现监听。
@@ -12,46 +23,46 @@
 
 ### observable(obj, options)
 
-将数据 obj 转换为响应式的。之后可通过 ```observe``` 方法添加监听回调，在修改数据时触发回调。
+将数据 obj 转换为响应式的。之后可通过 `observe` 方法添加监听回调，在修改数据时触发回调。
 
-```obj```：要监听的对象（只能为 plainObject）。
+`obj`：要监听的对象（只能为 plainObject）。
 
-```options```:
+`options`:
 
 * compare：一个 boolean，表是否需要比较新旧值。false 表不比较，只要设置属性值一律触发回调。默认true。
 * deep：一个 boolean，表是否深度监听。默认true。
 
-```return```：无返回值。
+`return`：无返回值。
 
 ### shallowObservable(obj, options)
 
 浅监听。
 
-```observable(obj, {...options, deep: false})```的语法糖。
+`observable(obj, {...options, deep: false})`的语法糖。
 
 ### isObservable(obj)
 
-判断对象 ```obj``` 是否为 observable 对象。
+判断对象 `obj` 是否为 observable 对象。
 
-```obj```：一个对象。
+`obj`：一个对象。
 
-```return```：一个boolean，表是否为 observable 对象。
+`return`：一个boolean，表是否为 observable 对象。
 
 ### observe(obj, key, callback, options)
 
-监听数据 ```obj``` 的指定键 ```key```，当其修改时触发回调 ```callback```。
+监听数据 `obj` 的指定键 `key`，当其修改时触发回调 `callback`。
 
-```obj```：要监听的对象（只能为 plainObject）。
+`obj`：要监听的对象（只能为 plainObject）。
 
-```key```：一个 string，表要监听的键。
+`key`：一个 string，表要监听的键。
 
-```callback```：数据修改时触发的回调。参数分别为newValue，oldValue。
+`callback`：数据修改时触发的回调。参数分别为newValue，oldValue。
 
-```options```：
+`options`：
 
-* deep：一个 boolean，表是否深度监听。默认false。
+* deep：一个 boolean，表是否深度监听。默认false，仅键自身的值被改变时触发更新。
 
-```return```：无返回值。
+`return`：无返回值。
 
 # proxy
 
