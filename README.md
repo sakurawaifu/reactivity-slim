@@ -9,11 +9,11 @@
 `npm i reactivity-slim`
 
 ## 使用
-`import { observable, observe } from 'reactivity-slim/meta'`
+`import { observable, observe } from 'reactivity-slim/meta.js'`
 
 或
 
-`import { observable, observe } from 'reactivity-slim/proxy'`
+`import { observable, observe } from 'reactivity-slim/proxy.js'`
 
 # meta property
 
