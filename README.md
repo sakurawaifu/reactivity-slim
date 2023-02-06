@@ -8,7 +8,7 @@
 
 ### observable(obj, options)
 
-将数据 obj 转换为响应式的。之后可通过 ```observe``` 方法添加监听回调。
+将数据 obj 转换为响应式的。之后可通过 ```observe``` 方法添加监听回调，在修改数据时触发回调。
 
 ```obj```：要监听的对象（只能为 plainObject）。
 
@@ -21,11 +21,11 @@
 
 ### shallowObservable(obj, options)
 
-浅监听
+浅监听。
 
 ```observable(obj, {...options, deep: false})```的语法糖。
 
-### observe(obj, key, callback)
+### observe(obj, key, callback, options)
 
 监听数据 ```obj``` 的指定键 ```key```，当其修改时触发回调 ```callback```。
 
@@ -33,11 +33,11 @@
 
 ```key```：一个 string，表要监听的键。
 
-```callback```：数据修改时触发的回调。
+```callback```：数据修改时触发的回调。参数分别为newValue，oldValue。
 
 ```options```：
+
 * deep：一个 boolean，表是否深度监听。默认false。
-* ancestral：一个 boolean。与 deep 相反，表祖先属性被修改时，是否触发该属性的回调。默认true。
 
 ```return```：无返回值。
 

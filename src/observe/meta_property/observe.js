@@ -8,25 +8,27 @@ const observable = (obj, options = {}) => {
     deep = true
   } = options
 
-  const keyMap = {}
-  depCenter.set(obj, keyMap)
+  const objDeps = {}
+  depCenter.set(obj, objDeps)
 
-  for (const key in obj) {
-    let value = obj[key]
+  for (const objKey in obj) {
+    let value = obj[objKey]
+
     const deps = new Set()
-    keyMap[key] = deps
+    objDeps[objKey] = deps
 
-    Object.defineProperty(obj, key, {
-      enumerable: true,
+    Object.defineProperty(obj, objKey, {
       configurable: true,
+      enumerable: true,
       get() {
         return value
       },
       set(newV) {
-        if (compare && newV === value) return
+        if (compare && value === newV) return
 
-        newV = value
-        deps.forEach(dep => dep(newV, value))
+        const oldV = value
+        value = newV
+        deps.forEach(dep => dep(newV, oldV))
       }
     })
 
@@ -47,31 +49,16 @@ const shallowObservable = (obj, options = {}) => {
 
 const observe = (obj, key, callback, options = {}) => {
   const {
-    ancestral = true,
     deep = false
   } = options
 
-  let targetObj = obj
-  let targetKey = key
-  const keyPath = key.split('.')
-
-  if (keyPath.length === 1) {
-    depCenter.get(obj)?.[key].add(callback)
-  } else {
-    let curObj = obj
-    for (const curKey of keyPath) {
-      targetObj = curObj
-      targetKey = curKey
-      ancestral && depCenter.get(curObj)?.[curKey].add(callback)
-      curObj = curObj[curKey]
-    }
-  }
+  depCenter.get(obj)?.[key].add(callback)
 
   if (deep) {
-    const v = targetObj[targetKey]
-    if (isPlainObject(v)) {
-      for (const k in v) {
-        observe(v, k, callback, options)
+    const value = obj[key]
+    if (isPlainObject(value)) {
+      for (const valueKey in value) {
+        observe(value, valueKey, callback, options)
       }
     }
   }
