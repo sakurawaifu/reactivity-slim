@@ -1,4 +1,4 @@
-import { observable, observe } from '../observe/meta_property/observe.js'
+import { isObservable, observable, observe } from '../observe/meta_property/observe.js'
 
 const data = {
   a: 1,
@@ -31,4 +31,4 @@ observe(data.c.c1, 'c11', (nv, ov) => {
   deep: true
 })
 
-data.c.c1.c11 = 1
+console.log(isObservable(data.c))
