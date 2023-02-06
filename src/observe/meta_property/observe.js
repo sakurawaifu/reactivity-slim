@@ -47,6 +47,8 @@ const shallowObservable = (obj, options = {}) => {
   })
 }
 
+const isObservable = obj => Boolean(depCenter.get(obj))
+
 const observe = (obj, key, callback, options = {}) => {
   const {
     deep = false
@@ -67,5 +69,6 @@ const observe = (obj, key, callback, options = {}) => {
 export {
   observable,
   shallowObservable,
+  isObservable,
   observe
 }

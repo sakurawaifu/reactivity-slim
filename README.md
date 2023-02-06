@@ -1,10 +1,14 @@
-# 简易响应式系统
+# reactivity-slim
 
-监听数据，当数据修改时触发回调。
+## 概述
 
-## 1. meta property
+一个简单的响应式系统监听数据，当数据修改时触发回调。有 meta property 和 proxy 两种实现。
+
+# meta property
 
 通过属性的 [[Get]]、[[Set]] 元属性实现监听。
+
+## API
 
 ### observable(obj, options)
 
@@ -25,6 +29,14 @@
 
 ```observable(obj, {...options, deep: false})```的语法糖。
 
+### isObservable(obj)
+
+判断对象 ```obj``` 是否为 observable 对象。
+
+```obj```：一个对象。
+
+```return```：一个boolean，表是否为 observable 对象。
+
 ### observe(obj, key, callback, options)
 
 监听数据 ```obj``` 的指定键 ```key```，当其修改时触发回调 ```callback```。
@@ -41,7 +53,7 @@
 
 ```return```：无返回值。
 
-## 2. proxy
+# proxy
 
 通过 Proxy 实现监听。
 
