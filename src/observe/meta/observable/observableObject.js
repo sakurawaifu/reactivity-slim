@@ -1,10 +1,10 @@
 import depCenter from '../depCenter.js'
-import { isPlainObject } from '../../../utils/utils.js'
+import { observable } from './index.js'
 
 const observableObject = (obj, options = {}) => {
   const {
-    compare = true,
-    deep = true
+    deep = true,
+    compare = true
   } = options
 
   const objDeps = {}
@@ -27,20 +27,19 @@ const observableObject = (obj, options = {}) => {
 
         const oldV = value
         value = newV
-        deps.forEach(dep => dep(newV, oldV))
 
-        if (newV === oldV && deep) {
-          if (isPlainObject(newV)) {
-            observableObject(newV, options)
-          }
+        // deep
+        if (deep && newV !== oldV) {
+          observable(newV, options)
         }
+
+        deps.forEach(dep => dep(newV, oldV))
       }
     })
 
+    // deep
     if (deep) {
-      if (isPlainObject(value)) {
-        observableObject(value, options)
-      }
+      observable(value, options)
     }
   }
 }

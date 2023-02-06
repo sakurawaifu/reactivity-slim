@@ -17,36 +17,37 @@
 
 # meta property
 
-通过属性的 [[Get]]、[[Set]] 元属性实现监听。
+* 对象：通过对象属性的 [[Get]]、[[Set]] 元属性实现。
+* 数组：通过重写数组的 push、pop、shift、unshift、splice、sort、reverse 方法实现。因为如果使用数组索引的 [[Get]]、[[Set]] 元属性来实现，当数组元素较多时，性能较差。
 
 ## API
 
-### observable(obj, options)
+### observable(value, options)
 
-将数据 obj 转换为响应式的。之后可通过 `observe` 方法添加监听回调，在修改数据时触发回调。
+将数据 value 转换为响应式的。之后可通过 `observe` 方法添加监听回调，在修改数据时触发回调。
 
-`obj`：要监听的对象（只能为 plainObject）。
+`value`：要监听的数据。只能为 plain object 或数组。
 
 `options`:
 
-* compare：一个 boolean，表是否需要比较新旧值。false 表不比较，只要设置属性值一律触发回调。默认true。
-* deep：一个 boolean，表是否深度监听。默认true。
+* deep：一个 boolean，表是否深度监听。默认true。深度监听时，设置对象的属性值或数组的元素为新数据，也会自动深度监听新数据。
+* compare：仅用于监听 plain object。一个 boolean，表是否需要比较对象属性的新旧值。false 表不比较，只要设置属性值一律触发回调。默认true。
 
 `return`：无返回值。
 
-### shallowObservable(obj, options)
+### shallowObservable(value, options)
 
 浅监听。
 
-`observable(obj, {...options, deep: false})`的语法糖。
+`observable(value, {...options, deep: false})`的语法糖。
 
-### isObservable(obj)
+### isObservable(value)
 
-判断对象 `obj` 是否为 observable 对象。
+判断 `value` 是否为 observable 数据。
 
-`obj`：一个对象。
+`value`：一个数据。
 
-`return`：一个boolean，表是否为 observable 对象。
+`return`：一个boolean，表是否为 observable 数据。
 
 ### observe(obj, key, callback, options)
 
