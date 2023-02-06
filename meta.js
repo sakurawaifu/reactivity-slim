@@ -1,1 +1,1 @@
-export { observable, shallowObservable, isObservable, observe } from './src/observe/meta/observe.js'
+export { observable, shallowObservable, isObservable, observe } from './src/observe/meta/observable/observable.js'
