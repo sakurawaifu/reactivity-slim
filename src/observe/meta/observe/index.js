@@ -1,13 +1,19 @@
-import observeArray from './observeArray.js'
+import { isPlainObject } from '../../../utils/utils.js'
 import observeObject from './observeObject.js'
+import observeArray from './observeArray.js'
+import observeObjectAny from './observeObjectAny.js'
 
-const observe = (...args) => {
-  if (args.length === 3) {
-    observeArray(...args)
-  } else if (args.length === 4) {
-    observeObject(...args)
-  } else {
-    throw new Error(`The number of parameters is illegal: expect ${3} or ${4}, get ${args.length}`)
+const observe = (value, keyOrCb, ...args) => {
+  if (isPlainObject(value)) {
+    if (typeof keyOrCb === 'string') {
+      observeObject(value, keyOrCb, ...args)
+    } else {
+      observeObjectAny(value, keyOrCb, ...args)
+    }
+  }
+
+  if (Array.isArray(value)) {
+    observeArray(value, keyOrCb, ...args)
   }
 }
 
