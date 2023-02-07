@@ -30,10 +30,12 @@
 
 `options`:
 
-* deep：一个 boolean，表是否深度监听。默认true。深度监听时，设置对象的属性值或数组的元素为新数据，也会自动深度监听新数据。
-* compare：仅用于监听 plain object。一个 boolean，表是否需要比较对象属性的新旧值。false 表不比较，只要设置属性值一律触发回调。默认true。
+* deep：一个 boolean，表是否深度响应式。默认true。深度响应式时，设置对象的属性值或数组的元素为新数据，也会自动深度监听新数据。
+* compare：仅用于 plain object。一个 boolean，表是否需要比较对象属性的新旧值。false 表不比较，只要设置属性值一律触发回调。默认true。
 
 `return`：无返回值。
+
+---
 
 ### shallowObservable(value, options)
 
@@ -49,19 +51,53 @@
 
 `return`：一个boolean，表是否为 observable 数据。
 
+---
+
 ### observe(obj, key, callback, options)
 
-监听数据 `obj` 的指定键 `key`，当其修改时触发回调 `callback`。
+监听对象 `obj` 的指定键 `key`，当其被修改时触发回调 `callback`。
 
-`obj`：要监听的对象（只能为 plainObject）。
+`obj`：要监听的对象（只能为 plain object）。
 
 `key`：一个 string，表要监听的键。
 
-`callback`：数据修改时触发的回调。参数分别为newValue，oldValue。
+`callback`：指定键被修改时触发的回调。参数分别为newValue，oldValue，表被修改键的新旧值。
 
 `options`：
 
-* deep：一个 boolean，表是否深度监听。默认false，仅键自身的值被改变时触发更新。
+* deep：一个 boolean，表是否深度监听。默认false，仅键自身的值被改变时触发更新，键值即使为 plain object 或数组，修改它时也不触发回调。
+
+`return`：无返回值。
+
+---
+
+### observe(obj, callback, options)
+
+监听对象 `obj` 的所有键，当其被修改时触发回调 `callback`。
+
+`obj`：要监听的对象（只能为 plain object）。
+
+`callback`：任意键被修改时触发的回调。参数分别为newValue，oldValue，表被修改键的新旧值。
+
+`options`：
+
+* deep：一个 boolean，表是否深度监听。默认false，仅键自身的值被改变时触发更新，键值即使为 plain object 或数组，修改它时也不触发回调。
+
+`return`：无返回值。
+
+---
+
+### observe(ary, callback, options)
+
+监听数组 `value`，当其修改时触发回调 `callback`。
+
+`ary`：要监听的数组。
+
+`callback`：数据修改时触发的回调。参数分别为newValue，oldValue。但是不保留副本，两个参数均是最新的数组。
+
+`options`：
+
+* deep：一个 boolean，表是否深度监听。默认false，仅调用监听的数组方法被改变数组时触发更新。数组元素即使为 plain object 或数组，修改它时也不触发回调。
 
 `return`：无返回值。
 

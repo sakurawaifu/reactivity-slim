@@ -2,7 +2,7 @@ import depCenter from '../depCenter.js'
 import { observable } from './index.js'
 import { def } from '../../../utils/utils.js'
 
-const observeElem = (ary, options = {}) => {
+const observableElems = (ary, options = {}) => {
   ary.forEach(v => observable(v, options))
 }
 
@@ -16,12 +16,13 @@ const methods = [
   'reverse'
 ]
 
+const arrayProto = Array.prototype
 const proxyProto = methods.reduce((proto, methodName) =>
   def(proto, methodName, function(...args) {
-    const result = Array.prototype[methodName].apply(this, args)
+    const result = arrayProto[methodName].apply(this, args)
 
     // deep
-    if (this.__options__.deep) {
+    if (this._r_options.deep) {
       let newElem = null
       switch (methodName) {
         case 'push':
@@ -32,12 +33,12 @@ const proxyProto = methods.reduce((proto, methodName) =>
           newElem = args.slice(2)
           break
       }
-      newElem && observeElem(newElem, this.__options__)
+      newElem && observableElems(newElem, this._r_options)
     }
 
     depCenter.get(this).forEach(dep => dep(this, this))
     return result
-  }), Object.create(Array.prototype))
+  }), Object.create(arrayProto))
 
 
 const observableArray = (ary, options = {}) => {
@@ -48,11 +49,12 @@ const observableArray = (ary, options = {}) => {
   const deps = new Set()
   depCenter.set(ary, deps)
 
-  def(ary, '__options__', deep, false)
+  def(ary, '_r_options', deep, false)
   Object.setPrototypeOf(ary, proxyProto)
 
+  // deep
   if (deep) {
-    observeElem(ary, options)
+    observableElems(ary, options)
   }
 }
 
