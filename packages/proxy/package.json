@@ -4,7 +4,6 @@
   "description": "reactivity via Proxy",
   "type": "module",
   "scripts": {
-    "publish": "bash ../../scripts/publish.sh"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,6 @@
   "description": "Internal utility content shared across @reactivity-slim packages.",
   "type": "module",
   "scripts": {
-    "publish": "bash ../../scripts/publish.sh"
   },
   "repository": {
     "type": "git",
