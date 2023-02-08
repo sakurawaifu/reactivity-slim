@@ -1,0 +1,18 @@
+lockfileVersion: 5.4
+
+importers:
+
+  .:
+    specifiers: {}
+
+  packages/meta:
+    specifiers:
+      '@reactivity-slim/shared': workspace:^0.0.1
+    dependencies:
+      '@reactivity-slim/shared': link:../shared
+
+  packages/proxy:
+    specifiers:
+      '@reactivity-slim/shared': workspace:^0.0.1
+    dependencies:
+      '@reactivity-slim/shared': link:../shared

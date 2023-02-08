@@ -1,6 +1,6 @@
 {
   "name": "@reactivity-slim/proxy",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "reactivity via Proxy",
   "type": "module",
   "scripts": {
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/sakurawaifu/reactivity-slim/issues"
   },
-  "homepage": "https://github.com/sakurawaifu/reactivity-slim#readme"
+  "homepage": "https://github.com/sakurawaifu/reactivity-slim#readme",
+  "dependencies": {
+    "@reactivity-slim/shared": "workspace:^0.0.1"
+  }
 }

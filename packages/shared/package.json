@@ -1,6 +1,6 @@
 {
   "name": "@reactivity-slim/shared",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Internal utility content shared across @reactivity-slim packages.",
   "type": "module",
   "scripts": {
