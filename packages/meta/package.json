@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/sakurawaifu/reactivity-slim#readme",
   "dependencies": {
-    "@reactivity-slim/shared": "workspace:^0.0.1"
+    "@reactivity-slim/shared": "workspace:*"
   }
 }

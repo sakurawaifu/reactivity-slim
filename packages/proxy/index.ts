@@ -1,5 +1,5 @@
 import { isPlainObject } from '@reactivity-slim/shared'
-import temp from './src/temp.js'
+import temp from './src/temp'
 
 export {
   isPlainObject,
