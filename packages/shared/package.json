@@ -3,7 +3,12 @@
   "version": "0.0.2",
   "description": "Internal utility content shared across @reactivity-slim packages.",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
   "scripts": {
+    "compile": "tsc",
+    "build": "npm run compile",
+    "publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",

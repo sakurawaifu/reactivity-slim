@@ -2,11 +2,11 @@
   "compilerOptions": {
     "sourceMap": false,
     "removeComments": true,
-    "outDir": "dist",
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noEmitOnError": true
   },
   "exclude": [
   ]
