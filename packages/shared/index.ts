@@ -1,1 +1,1 @@
-export { isPlainObject } from './utils/utils'
+export { isPlainObject } from './utils/utils.js'
