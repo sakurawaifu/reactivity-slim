@@ -5,8 +5,12 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
-  "files": ["dist", "types"],
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
+    "check-ts": "tsc --noEmit",
     "compile": "tsc",
     "build": "npm run compile",
     "publish": "npm publish --access public"
