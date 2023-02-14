@@ -10,7 +10,7 @@ importers:
 
   packages/meta:
     specifiers:
-      '@reactivity-slim/shared': workspace:^0.0.1
+      '@reactivity-slim/shared': workspace:*
     dependencies:
       '@reactivity-slim/shared': link:../shared
 
