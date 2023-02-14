@@ -1,0 +1,35 @@
+{
+  "name": "@reactivity-slim/proxy",
+  "version": "0.0.2-alpha.5",
+  "description": "reactivity via Proxy",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "check-ts": "tsc --noEmit",
+    "build-declaration": "tsc --emitDeclarationOnly",
+    "build-esbuild": "node script/build.js",
+    "build": "npm run build-declaration && npm run build-esbuild",
+    "publish": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakurawaifu/reactivity-slim.git"
+  },
+  "keywords": [
+    "reactivity-slim"
+  ],
+  "author": "hikali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sakurawaifu/reactivity-slim/issues"
+  },
+  "homepage": "https://github.com/sakurawaifu/reactivity-slim#readme",
+  "dependencies": {
+    "@reactivity-slim/shared": "workspace:*"
+  }
+}

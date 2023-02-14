@@ -4,3 +4,5 @@ node_modules
 .vscode
 .idea
 test
+dist
+types

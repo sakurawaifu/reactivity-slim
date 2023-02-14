@@ -1,21 +1,7 @@
 {
-  "name": "reactivity-slim",
-  "version": "0.4.0",
-  "description": "",
-  "type": "module",
-  "scripts": {
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sakurawaifu/reactivity-slim.git"
-  },
-  "keywords": [
-    "reactivity"
-  ],
-  "author": "hikali",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sakurawaifu/reactivity-slim/issues"
-  },
-  "homepage": "https://github.com/sakurawaifu/reactivity-slim#readme"
+  "private": true,
+  "packageManager": "pnpm@7.27.0",
+  "devDependencies": {
+    "esbuild": "^0.17.8"
+  }
 }
