@@ -1,6 +1,6 @@
 {
   "name": "@reactivity-slim/shared",
-  "version": "0.0.2-alpha.3",
+  "version": "0.0.2-alpha.5",
   "description": "Internal utility content shared across @reactivity-slim packages.",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,8 +11,9 @@
   ],
   "scripts": {
     "check-ts": "tsc --noEmit",
-    "compile": "tsc",
-    "build": "npm run compile",
+    "build-declaration": "tsc --emitDeclarationOnly",
+    "build-esbuild": "node script/build.js",
+    "build": "npm run build-declaration && npm run build-esbuild",
     "publish": "npm publish --access public"
   },
   "repository": {

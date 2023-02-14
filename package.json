@@ -1,6 +1,7 @@
 {
   "private": true,
-  "version": "0.4.0",
-  "packageManager": "pnpm@7.26.0",
-  "scripts": {}
+  "packageManager": "pnpm@7.27.0",
+  "devDependencies": {
+    "esbuild": "^0.17.8"
+  }
 }
