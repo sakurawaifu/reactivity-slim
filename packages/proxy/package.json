@@ -1,6 +1,6 @@
 {
   "name": "@reactivity-slim/proxy",
-  "version": "0.0.2-alpha.7",
+  "version": "0.0.2-alpha.8",
   "description": "reactivity via Proxy",
   "type": "module",
   "main": "./dist/index.js",
@@ -10,15 +10,17 @@
     "types"
   ],
   "scripts": {
+    "clean": "rimraf ./dist ./types",
     "check-ts": "tsc --noEmit",
     "build-declaration": "tsc --emitDeclarationOnly",
     "build-esbuild": "node script/build.js",
-    "build": "npm run build-declaration && npm run build-esbuild",
-    "publish": "npm publish --access public"
+    "build": "npm run clean && npm run build-declaration && npm run build-esbuild",
+    "publish": "npm run build && pnpm publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sakurawaifu/reactivity-slim.git"
+    "url": "git+https://github.com/sakurawaifu/reactivity-slim.git",
+    "directory": "packages/proxy"
   },
   "keywords": [
     "reactivity-slim"
@@ -28,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/sakurawaifu/reactivity-slim/issues"
   },
-  "homepage": "https://github.com/sakurawaifu/reactivity-slim#readme",
+  "homepage": "https://github.com/sakurawaifu/reactivity-slim/tree/main/packages/proxy#readme",
   "dependencies": {
     "@reactivity-slim/shared": "workspace:*"
   }
