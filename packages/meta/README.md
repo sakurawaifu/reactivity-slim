@@ -3,4 +3,4 @@
 
 # 安装
 
-`pnpm add @reactivity-slim/proxy`
+`pnpm add @reactivity-slim/meta`

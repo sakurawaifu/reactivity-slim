@@ -1,6 +1,6 @@
 {
   "name": "@reactivity-slim/meta",
-  "version": "0.0.2-alpha.7",
+  "version": "0.0.3-alpha.2",
   "description": "reactivity via meta property",
   "type": "module",
   "main": "./dist/index.js",
@@ -10,11 +10,12 @@
     "types"
   ],
   "scripts": {
+    "clean": "rimraf ./dist ./types",
     "check-ts": "tsc --noEmit",
     "build-declaration": "tsc --emitDeclarationOnly",
     "build-esbuild": "node script/build.js",
-    "build": "npm run build-declaration && npm run build-esbuild",
-    "publish": "npm publish --access public"
+    "build": "npm run clean && npm run build-declaration && npm run build-esbuild",
+    "publish": "pnpm publish --access public"
   },
   "repository": {
     "type": "git",
