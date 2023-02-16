@@ -18,6 +18,7 @@ const proxyProto = methods.reduce((proto, methodName) => {
     // trigger
     depCenterSelf.get(this).forEach(dep => dep(this, this))
   }
+  return proto
 }, Object.create(Array.prototype))
 
 const observableArray = (ary: any[]) => {

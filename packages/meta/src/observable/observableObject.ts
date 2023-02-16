@@ -24,10 +24,12 @@ const observableObject = (obj: Object) => {
       set(v: any) {
         const newV = v
         const oldV = value
+        if (oldV === newV) return
+
         value = v
         // trigger
         deps.forEach(dep => dep(newV, oldV))
-        depsSelf.forEach(dep => dep(newV, oldV))
+        depsSelf.forEach(dep => dep(this, this))
       }
     })
   }
