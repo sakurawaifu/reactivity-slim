@@ -1,4 +1,5 @@
 import { depCenterSelf } from '../depCenter.js'
+import { Dep } from '../types.js'
 
 const methods = [
   'push',
@@ -23,7 +24,7 @@ const proxyProto = methods.reduce((proto, methodName) => {
 
 const observableArray = (ary: any[]) => {
   Object.setPrototypeOf(ary, proxyProto)
-  depCenterSelf.set(ary, [])
+  depCenterSelf.set(ary, new Set<Dep>())
 }
 
 export default observableArray

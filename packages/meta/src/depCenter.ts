@@ -1,7 +1,7 @@
-import { Dep, Key, Observable } from './types.js'
+import { Deps, Key, Observable } from './types.js'
 
-const depCenterKey = new WeakMap<Observable, Record<Key, Dep[]>>()
-const depCenterSelf = new WeakMap<Observable, Dep[]>()
+const depCenterKey = new WeakMap<Observable, Record<Key, Deps>>()
+const depCenterSelf = new WeakMap<Observable, Deps>()
 
 export {
   depCenterKey,

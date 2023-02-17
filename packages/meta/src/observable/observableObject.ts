@@ -1,17 +1,17 @@
 import { isObservable } from '../utils/utils.js'
 import { depCenterKey, depCenterSelf } from '../depCenter.js'
-import { Deps } from '../types.js'
+import { Dep } from '../types.js'
 
 const observableObject = (obj: Object) => {
   if (isObservable(obj)) return
 
-  const depsSelf = []
+  const depsSelf = new Set<Dep>()
   depCenterSelf.set(obj, depsSelf)
   const depsKey = {}
   depCenterKey.set(obj, depsKey)
 
   for (const objKey in obj) {
-    const deps: Deps = []
+    const deps = new Set<Dep>()
     depsKey[objKey] = deps
 
     let value = obj[objKey]
