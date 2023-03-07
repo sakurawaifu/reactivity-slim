@@ -2,7 +2,7 @@ import { isObservable } from '../utils/utils.js'
 import { depCenterKey, depCenterSelf } from '../depCenter.js'
 import { Dep } from '../types.js'
 
-const observableObject = (obj: Object) => {
+const observableObject = (obj: object) => {
   if (isObservable(obj)) return
 
   const depsSelf = new Set<Dep>()

@@ -1,6 +1,6 @@
 {
   "name": "@reactivity-slim/meta",
-  "version": "0.0.3-beta.6",
+  "version": "0.0.3-beta.7",
   "description": "reactivity via meta property",
   "type": "module",
   "main": "./dist/index.js",
