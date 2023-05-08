@@ -1,8 +1,8 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.27.0",
+  "packageManager": "pnpm@7.29.0",
   "devDependencies": {
     "esbuild": "^0.17.8",
-    "rimraf": "^4.1.2"
+    "rimraf": "^5.0.0"
   }
 }
